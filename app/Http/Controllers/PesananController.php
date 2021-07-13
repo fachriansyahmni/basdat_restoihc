@@ -35,7 +35,7 @@ class PesananController extends Controller
 
     public function edit($id)
     {
-        $pesanan = Pesanan::find($id)->first();
+        $pesanan = Pesanan::find($id);
         return view('/pesanan/edit', compact('pesanan'));
     }
 
