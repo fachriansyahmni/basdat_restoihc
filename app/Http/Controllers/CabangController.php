@@ -30,7 +30,7 @@ class CabangController extends Controller
 
     public function edit($id)
     {
-        $cabang = Cabang::find($id)->first();
+        $cabang = Cabang::find($id);
         return view('/cabang/edit', compact('cabang'));
     }
 
