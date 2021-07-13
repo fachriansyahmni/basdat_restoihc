@@ -32,3 +32,10 @@ Route::post('/pesanan/simpan', 'PesananController@save')->name('pesanan-simpan')
 Route::get('/pesanan/edit/{id}', 'PesananController@edit')->name('pesanan-edit');
 Route::post('/pesanan/edit/{id}', 'PesananController@update')->name('pesanan-update');
 Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.delete');
+
+Route::get('/cabang', 'CabangController@index')->name('cabang');
+Route::get('/cabang/tambah', 'CabangController@create')->name('cabang.tambah');
+Route::post('/cabang/simpan', 'CabangController@save')->name('cabang.simpan');
+Route::get('/cabang/edit/{id}', 'CabangController@edit')->name('cabang.edit');
+Route::post('/cabang/update/{id}', 'CabangController@update')->name('cabang.update');
+Route::get('/cabang/delete/{id}', 'CabangController@delete')->name('cabang.delete');
