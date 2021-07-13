@@ -22,8 +22,7 @@ class PesananController extends Controller
     {
         $pesanan = new Pesanan();
         $pesanan->receiptid = $request->id;
-        $pesanan->idPesanan = $request->idPesanan;
-        $pesanan->jmlMenu = $request->noMeja;
+        $pesanan->jmlMenu = $request->jmlMeja;
         $pesanan->noMeja = $request->noMeja;
         $pesanan->idMenu = $request->idMenu;
         $pesanan->save();

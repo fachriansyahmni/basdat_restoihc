@@ -17,11 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/menu', 'MenuController@index')->name('menu');
 
+Route::get('/menu', 'MenuController@index')->name('menu');
+Route::post('/new-menu', 'MenuController@newMenu')->name('submit.new-menu');
+Route::patch('/edit-menu/{id}', 'MenuController@editMenu')->name('submit.edit-menu');
+Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.delet-menu');
 
 Route::get('/pesanan', 'PesananController@index')->name('pesanan');
 Route::get('/pesanan/tambah', 'PesananController@create')->name('pesanan-tambah');

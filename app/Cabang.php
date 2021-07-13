@@ -13,6 +13,6 @@ class Cabang extends Model
      */
     protected $table = 'cabang';
     protected $fillable = [
-        'id', 'alamat', 'noHp'
+        'alamat', 'noHp'
     ];
 }
