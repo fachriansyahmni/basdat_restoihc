@@ -1,3 +1,30 @@
+@php
+    $Menu = [
+        "Menu" => [
+            "Home" => [
+                "has-sub" => false,
+                "url" => "/home",
+                "icon" => 'micon dw dw-house-1'
+            ],
+            "Menu" => [
+                "has-sub" => false,
+                "url" => '/menu',
+                "icon" => 'micon dw dw-house-1'
+            ],
+            "Pesanan" => [
+                "has-sub" => false,
+                "url" => "#",
+                "icon" => 'micon dw dw-house-1'
+            ],
+            "Nota Pesanan" => [
+                "has-sub" => false,
+                "url" => "#",
+                "icon" => 'micon dw dw-house-1'
+            ]
+        ]
+    ]
+@endphp
+
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
@@ -11,6 +38,21 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
+                @foreach ($Menu as $index => $submenus)
+                <li>
+                    <div class="sidebar-small-cap">{{$index}}</div>
+                </li>
+                    @foreach ($submenus as $indexSubmenu => $submenu)
+                    <li class="dropdown">
+                        <a href="{{$submenu["url"]}}" class="dropdown-toggle {{(!$submenu['has-sub']) ? 'no-arrow':''}}">
+                            <span class="{{$submenu["icon"]}}"></span><span class="mtext">{{$indexSubmenu}}</span>
+                        </a>
+                    </li>
+                    @endforeach
+                @endforeach
+                {{-- <li>
+                    <div class="sidebar-small-cap">Admin</div>
+                </li>
                 <li class="dropdown">
                     <a href="/admin" class="dropdown-toggle">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
@@ -173,7 +215,7 @@
                         <li><a href="color-settings.html">Color Settings</a></li>
                         <li><a href="third-party-plugins.html">Third Party Plugins</a></li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

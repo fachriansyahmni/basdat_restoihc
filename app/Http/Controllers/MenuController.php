@@ -10,6 +10,9 @@ class MenuController extends Controller
 {
     public function index()
     {
-        return view('/menu/menu');
+        $Menus = Menu::get();
+
+        $compacts = ['Menus'];
+        return view('menu.menu', compact($compacts));
     }
 }
