@@ -36,23 +36,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="table-plus">Dimsum Udang Ayam</td>
-                                    <td>Rp. 13,000</td>
-                                    <td>13</td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                                <i class="dw dw-more"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
-                                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
-                                                <a class="dropdown-item" href="#"><i class="dw dw-delete-3"></i> Delete</a>
+                                @foreach ($pesanan as $item)
+                                    <tr>
+                                        <td class="table-plus"><?= $item->receiptid; ?></td>
+                                        <td><?= $item->jmlMenu; ?></td>
+                                        <td><?= $item->noMeja; ?></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                                    <i class="dw dw-more"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                    <a class="dropdown-item" href="#"><i class="dw dw-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="/pesanan/edit/<?= $item->id; ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                                    <a class="dropdown-item" href="{{route('pesanan.delete',$item->id)}}"><i class="dw dw-delete-3"></i> Delete</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

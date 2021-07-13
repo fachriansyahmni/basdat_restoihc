@@ -10,7 +10,8 @@ class PesananController extends Controller
 {
     public function index()
     {
-        return view('/pesanan/index');
+        $pesanan = Pesanan::get();
+        return view('/pesanan/index', compact('pesanan'));
     }
 
     public function create()
@@ -21,11 +22,36 @@ class PesananController extends Controller
     public function save(Request $request)
     {
         $pesanan = new Pesanan();
-        $pesanan->receiptid = $request->id;
-        $pesanan->jmlMenu = $request->jmlMeja;
+        $pesanan->receiptid = $request->receiptid;
+        $pesanan->jmlMenu = $request->jmlMenu;
         $pesanan->noMeja = $request->noMeja;
         $pesanan->idMenu = $request->idMenu;
         $pesanan->save();
+        return redirect('/pesanan');
+    }
+
+    public function edit($id)
+    {
+        $pesanan = Pesanan::find($id)->first();
+        return view('/pesanan/edit', compact('pesanan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $pesanan = Pesanan::find($id);
+        $pesanan->receiptid = $request->receiptid;
+        $pesanan->jmlMenu = $request->jmlMenu;
+        $pesanan->noMeja = $request->noMeja;
+        $pesanan->idMenu = $request->idMenu;
+        $pesanan->save();
+        return redirect('/pesanan');
+    }
+
+    public function delete($id)
+    {
+        $pesanan = Pesanan::find($id);
+        $pesanan->delete();
         return redirect('/pesanan');
     }
 }

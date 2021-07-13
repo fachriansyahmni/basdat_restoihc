@@ -29,3 +29,6 @@ Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.dele
 Route::get('/pesanan', 'PesananController@index')->name('pesanan');
 Route::get('/pesanan/tambah', 'PesananController@create')->name('pesanan-tambah');
 Route::post('/pesanan/simpan', 'PesananController@save')->name('pesanan-simpan');
+Route::get('/pesanan/edit/{id}', 'PesananController@edit')->name('pesanan-edit');
+Route::post('/pesanan/edit/{id}', 'PesananController@update')->name('pesanan-update');
+Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.delete');
