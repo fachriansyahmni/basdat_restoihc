@@ -21,3 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/menu', 'MenuController@index')->name('menu');
+
+
+Route::get('/pesanan', 'PesananController@index')->name('pesanan');
+Route::get('/pesanan/tambah', 'PesananController@create')->name('pesanan-tambah');
+Route::post('/pesanan/simpan', 'PesananController@save')->name('pesanan-simpan');
