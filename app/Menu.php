@@ -13,6 +13,6 @@ class Menu extends Model
      */
     protected $table = 'menu';
     protected $fillable = [
-        'id', 'namaMenu', 'harga'
+        'namaMenu', 'harga'
     ];
 }

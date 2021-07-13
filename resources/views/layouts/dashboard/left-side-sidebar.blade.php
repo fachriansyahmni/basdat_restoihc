@@ -1,5 +1,17 @@
 @php
     $Menu = [
+        "Admin Panel" => [
+            "Manage Pengguna" => [
+                "has-sub" => false,
+                "url" => "#",
+                "icon" => 'micon dw dw-house-1'
+            ],
+            "Manage Cabang" => [
+                "has-sub" => false,
+                "url" => "#",
+                "icon" => 'micon dw dw-house-1'
+            ],
+        ],
         "Menu" => [
             "Home" => [
                 "has-sub" => false,
@@ -39,6 +51,9 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 @foreach ($Menu as $index => $submenus)
+                @if ($index == "Admin Panel" && Auth::user()->jabatan == "pegawai")
+                    @continue
+                @endif
                 <li>
                     <div class="sidebar-small-cap">{{$index}}</div>
                 </li>
