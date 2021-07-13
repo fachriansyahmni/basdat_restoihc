@@ -13,6 +13,6 @@ class Receipt extends Model
      */
     protected $table = 'receipt';
     protected $fillable = [
-        'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
+        'idCabang', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
     ];
 }

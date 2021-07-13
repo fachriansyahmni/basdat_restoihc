@@ -13,6 +13,6 @@ class Pesanan extends Model
      */
     protected $table = 'pesanan';
     protected $fillable = [
-        'receiptid', 'noMeja', 'idMenu'
+        'receiptid', "jmlMenu", 'noMeja', 'idMenu'
     ];
 }

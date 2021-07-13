@@ -27,4 +27,12 @@ Route::patch('/edit-menu/{id}', 'MenuController@editMenu')->name('submit.edit-me
 Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.delet-menu');
 
 Route::get('/receipt', 'receiptController@index')->name('receipt');
-Route::get('/pesanan', 'pesananController@index')->name('pesanan');
+
+Route::get('/pesanan', 'PesananController@index')->name('pesanan');
+Route::get('/pesanan-baru', 'PesananController@pesananBaru')->name('pesanan-baru');
+Route::post('/submit-pesanan-baru', 'PesananController@submitPesananBaru')->name('submit-pesanan');
+Route::get('/pesanan/tambah', 'PesananController@create')->name('pesanan-tambah');
+Route::post('/pesanan/simpan', 'PesananController@save')->name('pesanan-simpan');
+Route::get('/pesanan/edit/{id}', 'PesananController@edit')->name('pesanan-edit');
+Route::post('/pesanan/edit/{id}', 'PesananController@update')->name('pesanan-update');
+Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.delete');

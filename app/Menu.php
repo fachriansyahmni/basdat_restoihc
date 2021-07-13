@@ -15,4 +15,9 @@ class Menu extends Model
     protected $fillable = [
         'namaMenu', 'harga'
     ];
+
+    public static function getIdMenuByName($name)
+    {
+        return self::where("namaMenu", $name)->first();
+    }
 }
