@@ -17,7 +17,6 @@ class CreateReceipt extends Migration
             $table->id();
             $table->unsignedBigInteger("idCabang")->nullable();
             $table->unsignedBigInteger("idPegawai")->nullable();
-            $table->unsignedBigInteger("idCabang")->nullable();
             $table->string("nama_pelanggan")->nullable();
             $table->integer("totalHarga")->default(0);
             $table->integer("jmlBayar")->default(0);
