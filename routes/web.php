@@ -25,3 +25,6 @@ Route::get('/menu', 'MenuController@index')->name('menu');
 Route::post('/new-menu', 'MenuController@newMenu')->name('submit.new-menu');
 Route::patch('/edit-menu/{id}', 'MenuController@editMenu')->name('submit.edit-menu');
 Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.delet-menu');
+
+Route::get('/receipt', 'receiptController@index')->name('receipt');
+Route::get('/pesanan', 'pesananController@index')->name('pesanan');

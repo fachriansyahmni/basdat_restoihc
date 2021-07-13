@@ -8,5 +8,8 @@ use App\Receipt;
 
 class ReceiptController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('receipt.index');
+    }
 }

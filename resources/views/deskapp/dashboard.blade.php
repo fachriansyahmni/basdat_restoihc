@@ -3,7 +3,7 @@
 <head>
 	<!-- Basic Page Info -->
 	<meta charset="utf-8">
-	<title>Doger Resto</title>
+	<title>{{ config('app.name', 'Laravel') }}</title>
 
 	<!-- Site favicon -->
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('vendors/dash-deskapp/vendors/images/apple-touch-icon.png') }}">

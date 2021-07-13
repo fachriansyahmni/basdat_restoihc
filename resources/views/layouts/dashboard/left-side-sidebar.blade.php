@@ -3,36 +3,31 @@
         "Admin Panel" => [
             "Manage Pengguna" => [
                 "has-sub" => false,
-                "url" => "#",
+                "url" => "home",
                 "icon" => 'micon dw dw-house-1'
             ],
             "Manage Cabang" => [
                 "has-sub" => false,
-                "url" => "#",
+                "url" => "home",
                 "icon" => 'micon dw dw-house-1'
             ],
         ],
         "Menu" => [
             "Home" => [
                 "has-sub" => false,
-                "url" => "/home",
+                "url" => "home",
                 "icon" => 'micon dw dw-house-1'
             ],
             "Menu" => [
                 "has-sub" => false,
-                "url" => '/menu',
+                "url" => 'menu',
                 "icon" => 'micon dw dw-house-1'
             ],
             "Pesanan" => [
                 "has-sub" => false,
-                "url" => "#",
+                "url" => "pesanan",
                 "icon" => 'micon dw dw-house-1'
             ],
-            "Nota Pesanan" => [
-                "has-sub" => false,
-                "url" => "#",
-                "icon" => 'micon dw dw-house-1'
-            ]
         ]
     ]
 @endphp
@@ -59,7 +54,7 @@
                 </li>
                     @foreach ($submenus as $indexSubmenu => $submenu)
                     <li class="dropdown">
-                        <a href="{{$submenu["url"]}}" class="dropdown-toggle {{(!$submenu['has-sub']) ? 'no-arrow':''}}">
+                        <a href="{{route($submenu["url"])}}" class="dropdown-toggle {{(!$submenu['has-sub']) ? 'no-arrow':''}}">
                             <span class="{{$submenu["icon"]}}"></span><span class="mtext">{{$indexSubmenu}}</span>
                         </a>
                     </li>

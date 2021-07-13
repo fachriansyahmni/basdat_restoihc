@@ -8,5 +8,8 @@ use App\Pesanan;
 
 class PesananController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('pesanan.index');
+    }
 }
