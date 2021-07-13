@@ -15,6 +15,8 @@ class CreateMenu extends Migration
     {
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
+            $table->string("namaMenu");
+            $table->unsignedInteger("harga")->default(0);
             $table->timestamps();
         });
     }
