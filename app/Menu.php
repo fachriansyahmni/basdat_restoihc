@@ -11,7 +11,8 @@ class Menu extends Model
      *
      * @var string
      */
+    protected $table = 'menu';
     protected $fillable = [
-        'User', 'Cabang', 'Receipt', 'Menu', 'Pesanan'
+        'id', 'namaMenu', 'harga'
     ];
 }

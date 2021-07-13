@@ -11,7 +11,8 @@ class Receipt extends Model
      *
      * @var string
      */
+    protected $table = 'receipt';
     protected $fillable = [
-        'User', 'Cabang', 'Receipt', 'Menu', 'Pesanan'
+        'id', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
     ];
 }

@@ -11,7 +11,8 @@ class Cabang extends Model
      *
      * @var string
      */
+    protected $table = 'cabang';
     protected $fillable = [
-        'User', 'Cabang', 'Receipt', 'Menu', 'Pesanan'
+        'id', 'alamat', 'noHp'
     ];
 }
