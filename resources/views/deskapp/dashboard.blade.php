@@ -25,7 +25,7 @@
 	@stack('css')
 </head>
 <body>
-	<div class="pre-loader">
+	{{-- <div class="pre-loader">
 		<div class="pre-loader-box">
 			<div class="loader-logo"><img src=" {{ asset('/vendors/dash-deskapp/vendors/images/deskapp-logo.svg') }}" alt=""></div>
 			<div class='loader-progress' id="progress_div">
@@ -36,7 +36,7 @@
 				Harap Tunggu ...
 			</div>
 		</div>
-	</div>
+	</div> --}}
 
 	@include('layouts.dashboard.header')
 	
