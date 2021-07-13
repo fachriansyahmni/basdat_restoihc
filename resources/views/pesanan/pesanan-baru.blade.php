@@ -39,7 +39,7 @@
                                 </th>
                                 <th>Menu</th>
                                 <th>Harga Satuan</th>
-                                <th>Jumlah</th>
+                                <th width=20%>Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -3,12 +3,12 @@
         "Admin Panel" => [
             "Manage Pengguna" => [
                 "has-sub" => false,
-                "url" => "home",
+                "url" => "user",
                 "icon" => 'micon dw dw-house-1'
             ],
             "Manage Cabang" => [
                 "has-sub" => false,
-                "url" => "home",
+                "url" => "cabang",
                 "icon" => 'micon dw dw-house-1'
             ],
         ],
