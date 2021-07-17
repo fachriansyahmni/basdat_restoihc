@@ -21,11 +21,16 @@ class CabangController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'alamat' => 'min:1|max:65535',
+            'noHp' => 'min:1|max:191',
+        ]);
+
         $cabang = new Cabang();
         $cabang->alamat = $request->alamat;
         $cabang->noHp = $request->noHp;
         $cabang->save();
-        return redirect('/cabang');
+        return redirect()->route('cabang');
     }
 
     public function edit($id)
@@ -36,11 +41,16 @@ class CabangController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'alamat' => 'min:1|max:5',
+            'noHp' => 'min:1|max:5',
+        ]);
+
         $cabang = Cabang::find($id);
         $cabang->alamat = $request->alamat;
         $cabang->noHp = $request->noHp;
         $cabang->save();
-        return redirect('/cabang');
+        return redirect()->route('cabang');
     }
 
     public function delete($id)

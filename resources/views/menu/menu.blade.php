@@ -23,8 +23,18 @@
 <div v class="card-box mb-30">
                     <div class="pd-20">
                         <h4 class="text-blue h4">Data Menu</h4>
-                        <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary">Tambah Data</a>
+                        <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary mb-3">Tambah Data</a>
+                        @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
                     </div>
+
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
                             <thead>
@@ -119,6 +129,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
+
                <form action="{{route('submit.new-menu')}}" method="post">
                     @csrf
                     <div class="form-group">

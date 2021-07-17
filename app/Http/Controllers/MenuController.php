@@ -19,8 +19,8 @@ class MenuController extends Controller
     public function newMenu(Request $request)
     {
         $request->validate([
-            'namaMenu' => 'required',
-            'harga' => 'required',
+            'namaMenu' => 'required|min:0|max:191',
+            'harga' => 'required|min:0',
         ]);
 
         $newMenu = new Menu([
