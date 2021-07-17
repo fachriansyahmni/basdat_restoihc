@@ -15,4 +15,9 @@ class Pesanan extends Model
     protected $fillable = [
         'receiptid', "jmlMenu", 'noMeja', 'idMenu'
     ];
+
+    public function d_menu()
+    {
+        return $this->hasOne(Menu::class, "id", "idMenu");
+    }
 }

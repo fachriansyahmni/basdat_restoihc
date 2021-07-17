@@ -13,8 +13,8 @@ class PesananController extends Controller
 {
     public function index()
     {
-        $pesanan = Pesanan::get();
-        return view('/pesanan/index', compact('pesanan'));
+        $Receipts = Receipt::orderBy('created_at', 'desc')->get();
+        return view('/pesanan/index', compact('Receipts'));
     }
 
     public function create()
@@ -76,7 +76,7 @@ class PesananController extends Controller
         ]);
 
         $payloads = json_decode($request->payload);
-
+        $totalHarga = 0;
         $receipt = new Receipt([
             'idCabang' => null,
             'idPegawai' => Auth::user()->id,
@@ -96,7 +96,10 @@ class PesananController extends Controller
                     'idMenu' => $MenuId->id
                 ]);
                 $pesanan->save();
+                $totalHarga += $payload->qtymenu * $MenuId->harga;
             }
+            $receipt->totalHarga = $totalHarga;
+            $receipt->save();
         }
         return redirect()->back();
     }

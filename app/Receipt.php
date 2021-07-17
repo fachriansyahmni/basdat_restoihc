@@ -15,4 +15,9 @@ class Receipt extends Model
     protected $fillable = [
         'idCabang', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
     ];
+
+    public function d_pesanan()
+    {
+        return $this->hasMany(Pesanan::class, 'receiptid', 'id');
+    }
 }
