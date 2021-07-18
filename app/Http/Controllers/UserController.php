@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Session;
 
 class UserController extends Controller
 {
@@ -21,29 +22,48 @@ class UserController extends Controller
 
     public function save(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required|min:5|max:16',
+            'username' => 'required|min:5|max:16',
+            'password' => 'required|min:8|max:16',
+        ]);
+
         $user = new User();
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->jabatan = $request->jabatan;
         $user->save();
+
+        Session::flash('sukses','Berhasil menambah data');
+
         return redirect('/user');
     }
 
     public function edit($id)
     {
+
         $user = User::find($id);
         return view('/user/edit', compact('user'));
     }
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
         $user = User::find($id);
         $user->name = $request->name;
         $user->username = $request->username;
         $user->password = bcrypt($request->password);
         $user->jabatan = $request->jabatan;
         $user->save();
+
+        Session::flash('sukses','Data berhasil di update!');
+
         return redirect('/user');
     }
 
@@ -51,6 +71,8 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+
+        Session::flash('sukses','Berhasil menghapus data');
         return redirect('/user');
     }
 }

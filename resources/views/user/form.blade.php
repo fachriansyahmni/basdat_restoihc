@@ -1,6 +1,15 @@
 @extends('deskapp.dashboard')
 
 @section('main-content')
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+             @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+             @endforeach
+        </ul>
+    </div>
+@endif
 <div class="pd-20 card-box mb-30">
     <div class="clearfix">
         <div class="pull-left">
