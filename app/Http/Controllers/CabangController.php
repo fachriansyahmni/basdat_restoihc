@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\CabangExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Cabang;
 
 class CabangController extends Controller
@@ -58,5 +60,10 @@ class CabangController extends Controller
         $cabang = Cabang::find($id);
         $cabang->delete();
         return redirect('/cabang');
+    }
+
+    public function export()
+    {
+        return Excel::download(new CabangExport, 'cabang.xlsx');
     }
 }

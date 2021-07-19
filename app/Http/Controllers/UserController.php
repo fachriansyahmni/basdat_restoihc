@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use Session;
 
@@ -36,7 +38,7 @@ class UserController extends Controller
         $user->jabatan = $request->jabatan;
         $user->save();
 
-        Session::flash('sukses','Berhasil menambah data');
+        Session::flash('sukses', 'Berhasil menambah data');
 
         return redirect('/user');
     }
@@ -62,7 +64,7 @@ class UserController extends Controller
         $user->jabatan = $request->jabatan;
         $user->save();
 
-        Session::flash('sukses','Data berhasil di update!');
+        Session::flash('sukses', 'Data berhasil di update!');
 
         return redirect('/user');
     }
@@ -72,7 +74,12 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        Session::flash('sukses','Berhasil menghapus data');
+        Session::flash('sukses', 'Berhasil menghapus data');
         return redirect('/user');
+    }
+
+    public function export()
+    {
+        return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

@@ -25,6 +25,7 @@ Route::get('/menu', 'MenuController@index')->name('menu');
 Route::post('/new-menu', 'MenuController@newMenu')->name('submit.new-menu');
 Route::patch('/edit-menu/{id}', 'MenuController@editMenu')->name('submit.edit-menu');
 Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.delet-menu');
+Route::get('menu/export/', 'MenuController@export')->name('menu.export');
 
 Route::get('/receipt', 'receiptController@index')->name('receipt');
 
@@ -36,6 +37,7 @@ Route::post('/pesanan/simpan', 'PesananController@save')->name('pesanan-simpan')
 Route::get('/pesanan/edit/{id}', 'PesananController@edit')->name('pesanan-edit');
 Route::post('/pesanan/edit/{id}', 'PesananController@update')->name('pesanan-update');
 Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.delete');
+Route::get('/pesanan/export/', 'PesananController@export')->name('pesanan.export');
 
 Route::get('/receipt/edit/{id}', "ReceiptController@edit")->name('receipt.edit');
 Route::post('/receipt/edit-save/{id}', "ReceiptController@update")->name('receipt.edit-save');
@@ -47,6 +49,7 @@ Route::post('/cabang/simpan', 'CabangController@save')->name('cabang.simpan');
 Route::get('/cabang/edit/{id}', 'CabangController@edit')->name('cabang.edit');
 Route::post('/cabang/update/{id}', 'CabangController@update')->name('cabang.update');
 Route::get('/cabang/delete/{id}', 'CabangController@delete')->name('cabang.delete');
+Route::get('/cabang/export/', 'CabangController@export')->name('cabang.export');
 
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/user/tambah', 'UserController@create')->name('user.tambah');
@@ -54,3 +57,4 @@ Route::post('/user/simpan', 'UserController@save')->name('user.simpan');
 Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/update/{id}', 'UserController@update')->name('user.update');
 Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
+Route::get('/user/export/', 'UserController@export');

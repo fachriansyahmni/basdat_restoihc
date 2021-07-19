@@ -24,6 +24,7 @@
                     <div class="pd-20">
                         <h4 class="text-blue h4">Data Cabang</h4>
                         <a href="/cabang/tambah" class="btn btn-primary">Tambah Data</a>
+                        <a href="/cabang/export" class="btn btn-primary">Export Data</a>
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">

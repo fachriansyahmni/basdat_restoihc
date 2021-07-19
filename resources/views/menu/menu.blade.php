@@ -24,6 +24,7 @@
                     <div class="pd-20">
                         <h4 class="text-blue h4">Data Menu</h4>
                         <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary mb-3">Tambah Data</a>
+                        <a href="/menu/export" role="button"  class="btn btn-primary mb-3">Export Data</a>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

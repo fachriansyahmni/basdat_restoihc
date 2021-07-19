@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\MenuExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Menu;
 
 class MenuController extends Controller
@@ -53,5 +55,10 @@ class MenuController extends Controller
         $save = $Menu->delete();
         if ($save) return redirect()->back();
         return redirect()->back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new MenuExport, 'menu.xlsx');
     }
 }

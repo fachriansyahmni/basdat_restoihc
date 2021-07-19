@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Pesanan;
 use App\Receipt;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\PesananExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesananController extends Controller
 {
@@ -102,5 +104,10 @@ class PesananController extends Controller
             $receipt->save();
         }
         return redirect()->back();
+    }
+
+    public function export()
+    {
+        return Excel::download(new PesananExport, 'pesanan.xlsx');
     }
 }

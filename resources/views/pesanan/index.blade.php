@@ -24,6 +24,7 @@
                     <div class="pd-20">
                         <h4 class="text-blue h4">Data Pesanan</h4>
                         <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
+                        <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
