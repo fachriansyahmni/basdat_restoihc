@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table" >
+            <table class="table" id="tblMenuPesanan" >
                 <thead>
                     <tr>
                         <th>No</th>
@@ -65,31 +65,105 @@
                  </thead>
                  <tbody>
                      @foreach ($Receipt->d_pesanan as $index => $itemPesanan)
-                     <input type="hidden" name="idPesanan[]" value="{{$itemPesanan->id}}"> 
-                     <tr>
+                     <tr id="pesanan-{{$index}}">
                          <td>{{$index + 1}}</td>
                          <td>{{$itemPesanan->d_menu->namaMenu}}</td>
-                         <td><input type="number" name="jmlMenu[]" value="{{$itemPesanan->jmlMenu}}" class="form-control" id=""></td>
+                         <td><input type="hidden" name="idPesanan[]" value="{{$itemPesanan->id}}"><input type="hidden" name="idMenu[]" class="mid-{{$itemPesanan->idMenu}}" value="{{$itemPesanan->idMenu}}"> <input type="number" name="jmlMenu[]" value="{{$itemPesanan->jmlMenu}}" class="form-control" id=""></td>
                          <td>
                              <div class="d-flex align-content-center">
                                  <span class="mr-auto">
                                      {{$itemPesanan->jmlMenu * $itemPesanan->d_menu->harga}}
                                  </span>
-                                 <form action="">
-                                     @csrf
-                                     <button type="submit" class="btn btn-danger"><i class="fa fa-minus"></i></button>
-                                 </form>
+                                     <button type="button" class="btn btn-danger btbdelet-psn" onclick="deleteRow('pesanan-{{$index}}')"  data-rpsn="pesanan-{{$index}}"><i class="fa fa-minus"></i></button>
                              </div>
                         </td>
                      </tr>
                      @endforeach
-                     <tr>
-                         <td colspan="4" align="right"><button type="button" class="btn btn-success"><i class="fa fa-plus"></i></button></td>
-                     </tr>
+                     {{-- <tr id="tr_add">
+                         <td colspan="4" align="right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#menuModal"><i class="fa fa-plus"></i></button></td>
+                     </tr> --}}
                 </tbody>
             </table>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#menuModal"><i class="fa fa-plus"></i></button>
         </div>
         <button type="submit" name="btn_submit" class="btn btn-primary">Simpan Perubahan</button>
     </form>
 </div>
+<div class="h-75">.</div>
+<div class="">
+    
+<div class="modal fade bs-example-modal-lg" id="menuModal" tabindex="-1" role="dialog" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="menuModalLabel">Daftar Menu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <table class="data-table table stripe hover nowrap ">
+                    <thead>
+                        <tr>
+                            <th class="table-plus datatable-nosort">Nama Menu</th>
+                            <th>Harga</th>
+                            <th class="datatable-nosort">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (count($Menus) < 1)
+                            <tr>
+                                <td colspan="3">data kosong</td>
+                            </tr>
+                        @endif
+                        @foreach ($Menus as $mn)
+                        <tr>
+                            <td class="table-plus" id="dnm{{$mn->id}}">{{$mn->namaMenu}}</td>
+                            <td id="dhm{{$mn->id}}">{{$mn->harga}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success btnadd-psn" data-rmenu="{{$mn->id}}"><i class="fa fa-plus">Add</i></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+               </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
+
+@push('script')
+    <script>
+        $( document ).ready(function() {
+            // $('.btbdelet-psn').click(function(){ 
+            //     var row = '#'+$(this).data('rpsn');
+            //     alert(row);
+            //     // $(row).remove(); 
+            // });
+            $('.btnadd-psn').click(function(){ 
+                var idmenu = $(this).data('rmenu');
+                var no = $('#tblMenuPesanan tbody tr:last td:first').text();
+                var noRow = parseInt(no)+1;
+                if($('.mid-'+idmenu).length){
+                    alert("Sudah ada dinota");
+                }else{   
+                    markup = '<tr id="pesanan-'+no+'">';
+                    markup += '<td>'+ noRow+'</td>';    
+                    markup += '<td>'+$('#dnm'+idmenu).text()+'</td>';    
+                    markup += '<td><input type="hidden" name="idMenu[]" class="mid-'+idmenu+'" value="'+idmenu+'"> <input type="number" name="jmlMenu[]" value="1" class="form-control" id=""></td>';    
+                    var rpsn = "pesanan-"+no;
+                    markup += '<td><div class="d-flex align-content-center"><span class="mr-auto">'+$('#dhm'+idmenu).text()+'</span><button type="button"  onclick="deleteRow(\''+rpsn+'\')" class="btn btn-danger btbdelet-psn" data-rpsn="pesanan-'+no+'"><i class="fa fa-minus"></i></button></div></td>';    
+                    markup += '</tr>';
+                    tableBody = $("#tblMenuPesanan tbody");
+                    tableBody.append(markup);
+                }
+            });
+        });
+        function deleteRow(rpsn){
+                var row = '#'+rpsn;
+                $(row).remove(); 
+         }
+    </script>
+@endpush    

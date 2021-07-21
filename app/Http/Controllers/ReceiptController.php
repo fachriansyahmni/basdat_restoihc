@@ -18,22 +18,30 @@ class ReceiptController extends Controller
     public function edit($idReceipt)
     {
         $Receipt = Receipt::find($idReceipt);
-        return view('receipt.edit', compact('Receipt'));
+        $Menus = Menu::get();
+        return view('receipt.edit', compact(['Receipt', 'Menus']));
     }
 
     public function update(Request $request, $idReceipt)
     {
-
         $Receipt = Receipt::find($idReceipt);
         $Receipt->nama_pelanggan = $request->nama_pelanggan;
         $totalHarga = 0;
-        foreach ($request->idPesanan as $index => $ipesanan) {
-            $Pesanan = Pesanan::find($ipesanan);
-            $Pesanan->jmlMenu = $request->jmlMenu[$index];
-            $Pesanan->noMeja = $request->noMeja;
-            $Pesanan->save();
+        $deleteRPesanan = Pesanan::where('receiptid', $Receipt->id)->delete();
+        foreach ($request->idMenu as $index => $ipesanan) {
+            // $Pesanan = Pesanan::find($ipesanan);
+            // $Pesanan->jmlMenu = $request->jmlMenu[$index];
+            // $Pesanan->noMeja = $request->noMeja;
+            // $Pesanan->save();
 
-            $totalHarga += $Pesanan->d_menu->harga * $request->jmlMenu[$index];
+            $pesanan = new Pesanan();
+            $pesanan->receiptid = $Receipt->id;
+            $pesanan->jmlMenu = $request->jmlMenu[$index];
+            $pesanan->noMeja = $request->noMeja;
+            $pesanan->idMenu = $request->idMenu[$index];
+            $pesanan->save();
+
+            $totalHarga += $pesanan->d_menu->harga * $request->jmlMenu[$index];
         }
         $Receipt->totalHarga = $totalHarga;
         $Receipt->jmlBayar = $request->jmlBayar;

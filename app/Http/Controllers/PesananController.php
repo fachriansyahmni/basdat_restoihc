@@ -57,7 +57,7 @@ class PesananController extends Controller
     {
         $pesanan = Pesanan::find($id);
         $pesanan->delete();
-        return redirect('/pesanan');
+        return redirect()->back();
     }
 
     public function pesananBaru()

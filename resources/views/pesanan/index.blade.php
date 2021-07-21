@@ -21,10 +21,26 @@
         </div>
     </div>
     <div class="card-box mb-30">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-content-center">
+                <div class="card-title">
+                    <h4 class="text-blue h4">Data Pesanan</h4>
+                </div>
+                <div class="">
+                    <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
+                    <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
+                </div>
+            </div>
+        </div>
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Data Pesanan</h4>
-                        <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
-                        <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
+                            <form action="" method="get">
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                        <input type="text" name="cari" placeholder="Cari" class="form-control">
+                                    </div>
+                                    <div class="col-sm-2"><button type="submit" class="btn btn-primary">cari</button></div>
+                                </div>
+                            </form>
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
