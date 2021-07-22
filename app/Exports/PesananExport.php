@@ -47,17 +47,18 @@ class PesananExport implements FromCollection, WithHeadings
                 'users.name',
                 'receipt.receiptId',
                 'receipt.nama_pelanggan',
-                'pesanan.id',
+                'pesanan.id as idPesanan',
                 'pesanan.noMeja',
                 'pesanan.jmlMenu',
-                'menu.id',
+                'menu.id as idMenu',
                 'menu.namaMenu',
                 'receipt.totalHarga',
                 'receipt.jmlBayar'
             )
             // ->select('pesanan.id')
             ->get();
-        dd($pesanan);
+        $Pesanan2 = Pesanan::get(); //kalau pake model
+        dd($Pesanan2, $pesanan);
         return $pesanan;
         // return Pesanan::all();
     }
