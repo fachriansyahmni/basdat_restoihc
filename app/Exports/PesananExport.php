@@ -22,11 +22,15 @@ class PesananExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            'Id Pegawai',
             'Nama Pegawai',
+            'Id Receipt',
             'Nama Pelanggan',
+            'Id Pesanan',
             'Nomor Meja',
-            'Menu Pesanan',
             'Jumlah Menu',
+            'Id Menu',
+            'Menu Pesanan',
             'Total Harga',
             'Jumlah Bayar',
         ];
@@ -38,8 +42,22 @@ class PesananExport implements FromCollection, WithHeadings
             ->join('receipt', 'pesanan.receiptid', '=', 'receipt.receiptId')
             ->join('users', 'users.id', '=', 'receipt.idPegawai')
             ->join('menu', 'menu.id', '=', 'pesanan.idMenu')
-            ->select('users.name', 'receipt.nama_pelanggan', 'pesanan.noMeja', 'menu.namaMenu', 'pesanan.jmlMenu', 'receipt.totalHarga', 'receipt.jmlBayar')
+            ->select(
+                'users.id',
+                'users.name',
+                'receipt.receiptId',
+                'receipt.nama_pelanggan',
+                'pesanan.id',
+                'pesanan.noMeja',
+                'pesanan.jmlMenu',
+                'menu.id',
+                'menu.namaMenu',
+                'receipt.totalHarga',
+                'receipt.jmlBayar'
+            )
+            // ->select('pesanan.id')
             ->get();
+        dd($pesanan);
         return $pesanan;
         // return Pesanan::all();
     }
