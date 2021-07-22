@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exports\CabangExport;
+use App\Imports\CabangImport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Cabang;
 
@@ -65,5 +67,12 @@ class CabangController extends Controller
     public function export()
     {
         return Excel::download(new CabangExport, 'cabang.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new CabangImport, $request->file('excel'));
+
+        return redirect()->back();
     }
 }

@@ -26,6 +26,7 @@ Route::post('/new-menu', 'MenuController@newMenu')->name('submit.new-menu');
 Route::patch('/edit-menu/{id}', 'MenuController@editMenu')->name('submit.edit-menu');
 Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.delet-menu');
 Route::get('menu/export/', 'MenuController@export')->name('menu.export');
+Route::post('menu/import/', 'MenuController@import')->name('menu.import');
 
 Route::get('/receipt', 'receiptController@index')->name('receipt');
 Route::get('/print-receipt', 'receiptController@printLaporan')->name('print-receipt');
@@ -39,6 +40,7 @@ Route::get('/pesanan/edit/{id}', 'PesananController@edit')->name('pesanan-edit')
 Route::post('/pesanan/edit/{id}', 'PesananController@update')->name('pesanan-update');
 Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.delete');
 Route::get('/pesanan/export/', 'PesananController@export')->name('pesanan.export');
+Route::post('/pesanan/import/', 'PesananController@import')->name('pesanan.import');
 
 Route::get('/receipt/edit/{id}', "ReceiptController@edit")->name('receipt.edit');
 Route::post('/receipt/edit-save/{id}', "ReceiptController@update")->name('receipt.edit-save');
@@ -51,6 +53,7 @@ Route::get('/cabang/edit/{id}', 'CabangController@edit')->name('cabang.edit');
 Route::post('/cabang/update/{id}', 'CabangController@update')->name('cabang.update');
 Route::get('/cabang/delete/{id}', 'CabangController@delete')->name('cabang.delete');
 Route::get('/cabang/export/', 'CabangController@export')->name('cabang.export');
+Route::post('/cabang/import/', 'CabangController@import')->name('cabang.import');
 
 Route::get('/user', 'UserController@index')->name('user');
 Route::get('/user/tambah', 'UserController@create')->name('user.tambah');
