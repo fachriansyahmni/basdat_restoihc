@@ -29,7 +29,7 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required|min:5|max:16',
-            'username' => 'required|min:5|max:16',
+            'username' => 'required|unique:users',
             'password' => 'required|min:8|max:16',
         ]);
 
@@ -40,9 +40,13 @@ class UserController extends Controller
         $user->jabatan = $request->jabatan;
         $user->save();
 
-        Session::flash('sukses', 'Berhasil menambah data');
+        if($user->save()){
+            return redirect('/user')->with(Session::flash('sukses', 'Berhasil menambah data'));
+        }else
+            return redirect('/user/form')->with(Session::flash('gagal', 'gagal menambah data'));
+        
 
-        return redirect('/user');
+        
     }
 
     public function edit($id)

@@ -17,6 +17,12 @@
             <p class="mb-30">All bootstrap element classies</p>
         </div>
     </div>
+    @if ($message = Session::get('gagal'))
+                <div class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button> 
+                    <strong>{{ $message }}</strong>
+                </div>
+    @endif
     <form action="/user/simpan" method="POST" >
         @csrf
         <div class="form-group row">
