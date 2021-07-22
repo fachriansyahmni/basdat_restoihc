@@ -33,14 +33,7 @@
             </div>
         </div>
                     <div class="pd-20">
-                            <form action="" method="get">
-                                <div class="row">
-                                    <div class="col-sm-10">
-                                        <input type="text" name="cari" placeholder="Cari" class="form-control">
-                                    </div>
-                                    <div class="col-sm-2"><button type="submit" class="btn btn-primary">cari</button></div>
-                                </div>
-                            </form>
+                        <button type="button" data-target="#filterModal" data-toggle="modal" class="btn btn-primary">Filter</button>
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
@@ -76,6 +69,37 @@
                             </tbody>
                         </table>
                     </div>
+    </div>
+
+    <div class="modal fade bs-example-modal-lg" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="filterModalLabel">Filter</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="get">
+                        <div class="form-group row">
+                            <div class="col-sm-2"><label for="">No Nota</label></div>
+                            <div class="col-sm-10">
+                                <input type="text" name="nonota" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-2"><label for="">Waktu Transaksi</label></div>
+                            <div class="col-sm-10">
+                                <input type="date" name="dateTransaksi" class="form-control">
+                            </div>
+                        </div>
+                        <button class="btn btn-success" type="submit">filter</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     @foreach ($Receipts as $item)

@@ -9,13 +9,18 @@ use App\Pesanan;
 use App\Receipt;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\PesananExport;
+use Barryvdh\DomPDF\PDF;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PesananController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $Receipts = Receipt::orderBy('created_at', 'desc')->get();
+        if ($request->has('dateTransaksi')) {
+            $Receipts =  Receipt::whereDate('created_at', "$request->dateTransaksi");
+            $Receipts;
+        }
         return view('/pesanan/index', compact('Receipts'));
     }
 
@@ -75,11 +80,14 @@ class PesananController extends Controller
             'noMeja' => 'required',
             'jmlBayar' => 'required',
             'payload' => 'required',
+        ], [
+            'namaPembeli.required' => 'Nama Pemberli Tidak Boleh Kosong'
         ]);
 
         $payloads = json_decode($request->payload);
         $totalHarga = 0;
         $receipt = new Receipt([
+            'receiptId' => Receipt::generateId(),
             'idCabang' => null,
             'idPegawai' => Auth::user()->id,
             'nama_pelanggan' => $request->namaPembeli,
@@ -92,7 +100,7 @@ class PesananController extends Controller
             foreach ($payloads as $payload) {
                 $MenuId = Menu::getIdMenuByName($payload->nm);
                 $pesanan = new Pesanan([
-                    'receiptid' => $receipt->id,
+                    'receiptid' => $receipt->receiptId,
                     "jmlMenu" => $payload->qtymenu,
                     'noMeja' => $request->noMeja,
                     'idMenu' => $MenuId->id

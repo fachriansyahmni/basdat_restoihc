@@ -24,21 +24,35 @@
     <div class="clearfix">
         <div class="pull-left">
             <h4 class="text-blue h4">Edit Data Pesanan</h4>
-            <p class="mb-30">All bootstrap element classies</p>
+            <p class="mb-30">@if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif</p>
         </div>
     </div>
     <form action="{{route('receipt.edit-save',$Receipt->id)}}" method="POST" >
         @csrf
         <div class="form-group row">
-            <label class="col-sm-12 col-md-2 col-form-label">Nomor Receipt</label>
-            <div class="col-sm-12 col-md-10">
-                <input class="form-control" value="<?= $Receipt->id; ?>" type="text" readonly disabled placeholder="Nomor Receipt">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="">Nomor Receipt</label>
+                    <div class="">
+                        <input class="form-control" value="<?= $Receipt->id; ?>" type="text" readonly disabled placeholder="Nomor Receipt">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-12 col-md-2 col-form-label">Nomor Meja</label>
-            <div class="col-sm-12 col-md-10">
-                <input name="noMeja" class="form-control" value="<?= $Receipt->d_pesanan[0]->noMeja; ?>" type="text" placeholder="Nomor Meja">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="">Nomor Meja</label>
+                    <div class="">
+                        <input name="noMeja" class="form-control" value="<?= $Receipt->d_pesanan[0]->noMeja; ?>" type="text" placeholder="Nomor Meja">
+                    </div>
+                </div>
             </div>
         </div>
         <div class="form-group row">
@@ -84,9 +98,11 @@
                      </tr> --}}
                 </tbody>
             </table>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#menuModal"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-outline-success btn-block" data-toggle="modal" data-target="#menuModal"><i class="fa fa-plus"></i></button>
         </div>
-        <button type="submit" name="btn_submit" class="btn btn-primary">Simpan Perubahan</button>
+        <div class="mt-5">
+            <button type="submit" name="btn_submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan Perubahan</button>
+        </div>
     </form>
 </div>
 <div class="h-75">.</div>

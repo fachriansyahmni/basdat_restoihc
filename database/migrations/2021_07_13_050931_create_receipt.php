@@ -14,7 +14,7 @@ class CreateReceipt extends Migration
     public function up()
     {
         Schema::create('receipt', function (Blueprint $table) {
-            $table->id();
+            $table->string("receiptId")->unique();
             $table->unsignedBigInteger("idCabang")->nullable();
             $table->unsignedBigInteger("idPegawai")->nullable();
             $table->string("nama_pelanggan")->nullable();

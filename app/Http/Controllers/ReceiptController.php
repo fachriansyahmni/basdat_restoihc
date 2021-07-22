@@ -7,6 +7,7 @@ use App\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Receipt;
+use Barryvdh\DomPDF\Facade as PDF;;
 
 class ReceiptController extends Controller
 {
@@ -24,6 +25,14 @@ class ReceiptController extends Controller
 
     public function update(Request $request, $idReceipt)
     {
+        $request->validate([
+            'noMeja' => "required",
+            'jmlBayar' => "required",
+            'jmlMenu' => "required",
+            'idMenu' => "required",
+        ], [
+            'noMeja.required' => 'No Meja tidak boleh kosong!'
+        ]);
         $Receipt = Receipt::find($idReceipt);
         $Receipt->nama_pelanggan = $request->nama_pelanggan;
         $totalHarga = 0;
@@ -54,5 +63,12 @@ class ReceiptController extends Controller
         $Receipt = Receipt::find($id);
         $Receipt->delete();
         return redirect()->back();
+    }
+
+    public function printLaporan()
+    {
+        $data = [];
+        $pdf = PDF::loadView('receipt.pdf', $data);
+        return $pdf->stream('invoice.pdf');
     }
 }

@@ -28,6 +28,7 @@ Route::delete('/hapus-menu/{id}', 'MenuController@hapusMenu')->name('submit.dele
 Route::get('menu/export/', 'MenuController@export')->name('menu.export');
 
 Route::get('/receipt', 'receiptController@index')->name('receipt');
+Route::get('/print-receipt', 'receiptController@printLaporan')->name('print-receipt');
 
 Route::get('/pesanan', 'PesananController@index')->name('pesanan');
 Route::get('/pesanan-baru', 'PesananController@pesananBaru')->name('pesanan-baru');

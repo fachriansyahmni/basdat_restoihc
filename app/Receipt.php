@@ -15,9 +15,17 @@ class Receipt extends Model
     protected $fillable = [
         'idCabang', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
     ];
+    public $incrementing = false;
+    protected $primaryKey = 'receiptId';
+    protected $keyType = 'string';
 
     public function d_pesanan()
     {
-        return $this->hasMany(Pesanan::class, 'receiptid', 'id');
+        return $this->hasMany(Pesanan::class, 'receiptid', 'receiptId');
+    }
+
+    public static function generateId()
+    {
+        dd(date("y"));
     }
 }
