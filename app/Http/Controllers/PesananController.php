@@ -20,8 +20,7 @@ class PesananController extends Controller
     {
         $Receipts = Receipt::orderBy('created_at', 'desc')->get();
         if ($request->has('dateTransaksi')) {
-            $Receipts =  Receipt::whereDate('created_at', "$request->dateTransaksi");
-            $Receipts;
+            $Receipts = Receipt::whereDate('tglPembelian', "$request->dateTransaksi")->get();
         }
         return view('/pesanan/index', compact('Receipts'));
     }

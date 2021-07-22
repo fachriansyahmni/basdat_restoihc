@@ -29,7 +29,7 @@ Route::get('menu/export/', 'MenuController@export')->name('menu.export');
 Route::post('menu/import/', 'MenuController@import')->name('menu.import');
 
 Route::get('/receipt', 'receiptController@index')->name('receipt');
-Route::get('/print-receipt', 'receiptController@printLaporan')->name('print-receipt');
+Route::post('/print-receipt', 'receiptController@printLaporan')->name('print-receipt');
 
 Route::get('/pesanan', 'PesananController@index')->name('pesanan');
 Route::get('/pesanan-baru', 'PesananController@pesananBaru')->name('pesanan-baru');

@@ -28,18 +28,21 @@
                 </div>
                 <div class="">
                     <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
-                    <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
                 </div>
             </div>
         </div>
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Data Pesanan</h4>
-                        <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
                         <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
                         <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary">Import Data</a>
                         <button type="button" data-target="#filterModal" data-toggle="modal" class="btn btn-primary">Filter</button>
                     </div>
                     <div class="pb-20">
+                        <div class="pd-20 mt-4">
+                            <form action="{{route('print-receipt')}}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-success"><i class="fa fa-download"></i> download</button>
+                            </form>
+                        </div>
                         <table class="data-table table stripe hover nowrap">
                             <thead>
                                 <tr>

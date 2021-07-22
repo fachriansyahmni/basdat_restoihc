@@ -67,7 +67,7 @@ class ReceiptController extends Controller
 
     public function printLaporan()
     {
-        $data = [];
+        $data["Receipts"] = Receipt::get();
         $pdf = PDF::loadView('receipt.pdf', $data);
         return $pdf->stream('invoice.pdf');
     }
