@@ -13,7 +13,7 @@ class Receipt extends Model
      */
     protected $table = 'receipt';
     protected $fillable = [
-        'idCabang', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
+        'receiptId', 'idCabang', 'idPegawai', 'nama_pelanggan', 'totalHarga', 'jmlBayar', 'tglPembelian'
     ];
     public $incrementing = false;
     protected $primaryKey = 'receiptId';
@@ -26,6 +26,13 @@ class Receipt extends Model
 
     public static function generateId()
     {
-        dd(date("y"));
+        if (self::latest()->first() != null) {
+            $num = substr(self::latest()->first()->receiptId, 3, 9) + 1;
+        } else {
+            $num = 1;
+        }
+        $num_padded = sprintf("%09d", $num);
+        $number = 'A' . date("y") . $num_padded;
+        return $number;
     }
 }

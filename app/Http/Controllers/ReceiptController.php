@@ -23,7 +23,7 @@ class ReceiptController extends Controller
         return view('receipt.edit', compact(['Receipt', 'Menus']));
     }
 
-    public function update(Request $request, $idReceipt)
+    public function update(Request $request, $receiptId)
     {
         $request->validate([
             'noMeja' => "required",
@@ -33,10 +33,10 @@ class ReceiptController extends Controller
         ], [
             'noMeja.required' => 'No Meja tidak boleh kosong!'
         ]);
-        $Receipt = Receipt::find($idReceipt);
+        $Receipt = Receipt::find($receiptId);
         $Receipt->nama_pelanggan = $request->nama_pelanggan;
         $totalHarga = 0;
-        $deleteRPesanan = Pesanan::where('receiptid', $Receipt->id)->delete();
+        $deleteRPesanan = Pesanan::where('receiptid', $Receipt->receiptId)->delete();
         foreach ($request->idMenu as $index => $ipesanan) {
             // $Pesanan = Pesanan::find($ipesanan);
             // $Pesanan->jmlMenu = $request->jmlMenu[$index];
@@ -44,7 +44,7 @@ class ReceiptController extends Controller
             // $Pesanan->save();
 
             $pesanan = new Pesanan();
-            $pesanan->receiptid = $Receipt->id;
+            $pesanan->receiptid = $Receipt->receiptId;
             $pesanan->jmlMenu = $request->jmlMenu[$index];
             $pesanan->noMeja = $request->noMeja;
             $pesanan->idMenu = $request->idMenu[$index];

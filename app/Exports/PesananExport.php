@@ -35,7 +35,7 @@ class PesananExport implements FromCollection, WithHeadings
     public function collection()
     {
         $pesanan = DB::table('pesanan')
-            ->join('receipt', 'pesanan.receiptid', '=', 'receipt.id')
+            ->join('receipt', 'pesanan.receiptid', '=', 'receipt.receiptId')
             ->join('users', 'users.id', '=', 'receipt.idPegawai')
             ->join('menu', 'menu.id', '=', 'pesanan.idMenu')
             ->select('users.name', 'receipt.nama_pelanggan', 'pesanan.noMeja', 'menu.namaMenu', 'pesanan.jmlMenu', 'receipt.totalHarga', 'receipt.jmlBayar')

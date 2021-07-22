@@ -42,8 +42,8 @@ Route::get('/pesanan/delete/{id}', 'PesananController@delete')->name('pesanan.de
 Route::get('/pesanan/export/', 'PesananController@export')->name('pesanan.export');
 Route::post('/pesanan/import/', 'PesananController@import')->name('pesanan.import');
 
-Route::get('/receipt/edit/{id}', "ReceiptController@edit")->name('receipt.edit');
-Route::post('/receipt/edit-save/{id}', "ReceiptController@update")->name('receipt.edit-save');
+Route::get('/receipt/edit/{receiptId}', "ReceiptController@edit")->name('receipt.edit');
+Route::post('/receipt/edit-save/{receiptId}', "ReceiptController@update")->name('receipt.edit-save');
 Route::get('/receipt/delete/{id}', "ReceiptController@delete")->name('receipt.delete');
 
 Route::get('/cabang', 'CabangController@index')->name('cabang');

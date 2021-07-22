@@ -52,7 +52,7 @@
                             <tbody>
                                 @foreach ($Receipts as $index => $item)
                                     <tr>
-                                        <td class="table-plus"><?= $item->id; ?></td>
+                                        <td class="table-plus"><?= $item->receiptId; ?></td>
                                         <td>{{ count($item->d_pesanan) }}</td>
                                         <td>{{$item->created_at}}</td>
                                         <td>
@@ -61,9 +61,9 @@
                                                     <i class="dw dw-more"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#detailPesanan{{$item->id}}" type="button"><i class="dw dw-eye"></i> View</a>
-                                                    <a class="dropdown-item" href="{{route('receipt.edit',$item->id)}}" ><i class="dw dw-edit2"></i> Edit</a>
-                                                    <a class="dropdown-item" href="{{route('receipt.delete',$item->id)}}"><i class="dw dw-delete-3"></i> Delete</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#detailPesanan{{$item->receiptId}}" type="button"><i class="dw dw-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="{{route('receipt.edit',$item->receiptId)}}" ><i class="dw dw-edit2"></i> Edit</a>
+                                                    <a class="dropdown-item" href="{{route('receipt.delete',$item->receiptId)}}"><i class="dw dw-delete-3"></i> Delete</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -107,11 +107,11 @@
     </div>
 
     @foreach ($Receipts as $item)
-    <div class="modal fade bs-example-modal-lg" id="detailPesanan{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="detailPesanan{{$item->id}}Label" aria-hidden="true">
+    <div class="modal fade bs-example-modal-lg" id="detailPesanan{{$item->receiptId}}" tabindex="-1" role="dialog" aria-labelledby="detailPesanan{{$item->receiptId}}Label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myLargeModalLabel">Detail Pesanan {{$item->receiptid}}</h4>
+                    <h4 class="modal-title" id="myLargeModalLabel">Detail Pesanan {{$item->receiptId}}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">

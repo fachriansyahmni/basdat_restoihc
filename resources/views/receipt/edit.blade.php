@@ -35,14 +35,14 @@
                 @endif</p>
         </div>
     </div>
-    <form action="{{route('receipt.edit-save',$Receipt->id)}}" method="POST" >
+    <form action="{{route('receipt.edit-save',$Receipt->receiptId)}}" method="POST" >
         @csrf
         <div class="form-group row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="">Nomor Receipt</label>
                     <div class="">
-                        <input class="form-control" value="<?= $Receipt->id; ?>" type="text" readonly disabled placeholder="Nomor Receipt">
+                        <input class="form-control" value="<?= $Receipt->receiptId; ?>" type="text" readonly disabled placeholder="Nomor Receipt">
                     </div>
                 </div>
             </div>
