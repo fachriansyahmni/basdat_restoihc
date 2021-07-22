@@ -9,6 +9,8 @@ use App\Pesanan;
 use App\Receipt;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\PesananExport;
+use App\Imports\PesananImport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PesananController extends Controller
@@ -109,5 +111,12 @@ class PesananController extends Controller
     public function export()
     {
         return Excel::download(new PesananExport, 'pesanan.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new PesananImport, $request->file('excel'));
+
+        return redirect()->back();
     }
 }

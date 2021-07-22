@@ -25,6 +25,7 @@
                         <h4 class="text-blue h4">Data Menu</h4>
                         <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary mb-3">Tambah Data</a>
                         <a href="/menu/export" role="button"  class="btn btn-primary mb-3">Export Data</a>
+                        <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg-import" class="btn btn-primary mb-3">Import Data</a>
                         @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -140,6 +141,32 @@
                     <div class="form-group">
                         <label for="">Harga</label>
                         <input type="number" class="form-control" name="harga" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- import modal --}}
+<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg-import" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Import Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+
+               <form action="{{route('menu.import')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Pilih Data</label>
+                        <input type="file" class="form-control" name="excel" required>
                     </div>
                     <div class="form-group">
                         <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>

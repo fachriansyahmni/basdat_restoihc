@@ -25,6 +25,7 @@
                         <h4 class="text-blue h4">Data Pesanan</h4>
                         <a href="{{route('pesanan-baru')}}" class="btn btn-success">Tambah Pesanan Baru</a>
                         <a href="{{route('pesanan.export')}}" class="btn btn-primary">Export Data</a>
+                        <a href="#" role="button" data-toggle="modal" data-target="#bd-example-modal-lg" class="btn btn-primary">Import Data</a>
                     </div>
                     <div class="pb-20">
                         <table class="data-table table stripe hover nowrap">
@@ -116,5 +117,31 @@
             </div>
         </div>
     </div>
+
+    {{-- import modal --}}
+<div class="modal fade bs-example-modal-lg" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Import Data</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+
+               <form action="{{route('pesanan.import')}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Pilih Data</label>
+                        <input type="file" class="form-control" name="excel" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endforeach
 @endsection

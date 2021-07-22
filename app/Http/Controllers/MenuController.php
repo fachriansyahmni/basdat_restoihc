@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exports\MenuExport;
+use App\Imports\MenuImport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Menu;
 
@@ -60,5 +62,12 @@ class MenuController extends Controller
     public function export()
     {
         return Excel::download(new MenuExport, 'menu.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new MenuImport, $request->file('excel'));
+
+        return redirect()->back();
     }
 }
