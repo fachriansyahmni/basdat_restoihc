@@ -22,12 +22,12 @@ class PesananImport implements ToModel, WithHeadingRow
             ->get();
 
         $receiptid = DB::table('receipt')
-            ->select('id')
+            ->select('receiptId')
             ->where('nama_pelanggan', $row['nama_pelanggan'])
             ->get();
 
         return new Pesanan([
-            'receiptid' => $receiptid[0]->id,
+            'receiptid' => $receiptid[0]->receiptId,
             'jmlMenu' => $row['jumlah_menu'],
             'noMeja' => $row['nomor_meja'],
             'idMenu' => $idMenu[0]->id,
