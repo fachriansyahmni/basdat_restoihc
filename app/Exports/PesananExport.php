@@ -57,8 +57,8 @@ class PesananExport implements FromCollection, WithHeadings
             )
             // ->select('pesanan.id')
             ->get();
-        $Pesanan2 = Pesanan::get(); //kalau pake model
-        dd($Pesanan2, $pesanan);
+        // $Pesanan2 = Pesanan::get(); //kalau pake model
+        // dd($Pesanan2, $pesanan);
         return $pesanan;
         // return Pesanan::all();
     }
