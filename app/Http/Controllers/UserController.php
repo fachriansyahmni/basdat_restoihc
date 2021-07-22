@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exports\UsersExport;
+use App\Imports\UsersImport;
+use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\User;
 use Session;
@@ -80,6 +82,13 @@ class UserController extends Controller
 
     public function export()
     {
-        return Excel::download(new UsersExport, 'users.xlsx');
+        return Excel::download(new UsersExport, 'user.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        Excel::import(new UsersImport, $request->file('excel'));
+
+        return redirect()->back();
     }
 }

@@ -16,6 +16,7 @@ class MenuImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new Menu([
+            'id' => $row['id'],
             'namaMenu' => $row['menu'],
             'harga' => $row['harga'],
         ]);

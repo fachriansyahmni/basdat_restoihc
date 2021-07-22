@@ -19,15 +19,17 @@ class UsersExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            'Id',
             'Nama',
             'Username',
+            'Password',
             'Jabatan',
         ];
     }
 
     public function collection()
     {
-        $cabang = DB::table('users')->select('name', 'username', 'jabatan')->get();
+        $cabang = DB::table('users')->select('id', 'name', 'username', 'password', 'jabatan')->get();
         return $cabang;
         // return User::all();
     }

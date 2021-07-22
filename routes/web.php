@@ -62,3 +62,4 @@ Route::get('/user/edit/{id}', 'UserController@edit')->name('user.edit');
 Route::post('/user/update/{id}', 'UserController@update')->name('user.update');
 Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
 Route::get('/user/export/', 'UserController@export');
+Route::post('/user/import/', 'UserController@import')->name('user.import');

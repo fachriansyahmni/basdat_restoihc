@@ -20,6 +20,7 @@ class MenuExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
+            'Id',
             'Menu',
             'Harga',
         ];
@@ -27,7 +28,7 @@ class MenuExport implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $cabang = DB::table('menu')->select('namaMenu', 'harga')->get();
+        $cabang = DB::table('menu')->select('id', 'namaMenu', 'harga')->get();
         return $cabang;
         // return Menu::all();
     }
