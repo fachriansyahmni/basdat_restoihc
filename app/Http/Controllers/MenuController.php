@@ -9,14 +9,20 @@ use App\Imports\MenuImport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Menu;
+use App\MenuKategori;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function index(Request $request, Menu $Menus)
     {
         $Menus = Menu::get();
-
-        $compacts = ['Menus'];
+        $MenuKategories = MenuKategori::get();
+        if ($request->has('nama') || $request->has('kategori')) {
+            $Menus = Menu::where('namaMenu', 'LIKE', '%' . $request->nama . '%');
+            if ($request->kategori != 0) $Menus->where('menu_kategori_id', $request->kategori);
+            $Menus = $Menus->get();
+        }
+        $compacts = ['Menus', 'MenuKategories'];
         return view('menu.menu', compact($compacts));
     }
 
@@ -31,6 +37,7 @@ class MenuController extends Controller
             'namaMenu' => $request->namaMenu,
             'harga' => $request->harga
         ]);
+        if ($request->has('kategori')) $newMenu->menu_kategori_id = $request->kategori;
         $save = $newMenu->save();
 
         if ($save) return redirect()->back();
@@ -42,9 +49,9 @@ class MenuController extends Controller
             'namaMenu' => 'required',
             'harga' => 'required',
         ]);
-
         $Menu = Menu::findOrFail($idMenu);
         $Menu->namaMenu = $request->namaMenu;
+        if ($request->has('kategori')) $Menu->menu_kategori_id = $request->kategori;
         $Menu->harga = $request->harga;
         $save = $Menu->save();
         if ($save) return redirect()->back();

@@ -15,4 +15,7 @@ class Cabang extends Model
     protected $fillable = [
         'alamat', 'noHp'
     ];
+    public $incrementing = false;
+    protected $primaryKey = 'idCabang';
+    protected $keyType = 'string';
 }

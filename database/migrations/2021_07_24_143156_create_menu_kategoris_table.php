@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCabang extends Migration
+class CreateMenuKategorisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCabang extends Migration
      */
     public function up()
     {
-        Schema::create('cabang', function (Blueprint $table) {
-            $table->string("idCabang")->unique();
-            $table->text("alamat");
-            $table->string("noHp");
-            $table->timestamps();
+        Schema::create('menu_kategoris', function (Blueprint $table) {
+            $table->id();
+            $table->string("name");
         });
     }
 
@@ -28,6 +26,6 @@ class CreateCabang extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cabang');
+        Schema::dropIfExists('menu_kategoris');
     }
 }

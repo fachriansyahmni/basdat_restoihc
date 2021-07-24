@@ -13,11 +13,16 @@ class Menu extends Model
      */
     protected $table = 'menu';
     protected $fillable = [
-        'namaMenu', 'harga'
+        'namaMenu', 'harga', 'menu_kategori_id'
     ];
 
     public static function getIdMenuByName($name)
     {
         return self::where("namaMenu", $name)->first();
+    }
+
+    public function kategoriName()
+    {
+        return $this->hasOne(MenuKategori::class, "id", "menu_kategori_id");
     }
 }

@@ -26,11 +26,13 @@ class CabangController extends Controller
     public function save(Request $request)
     {
         $request->validate([
+            'idCabang' => 'required|unique:cabang',
             'alamat' => 'min:1|max:65535',
             'noHp' => 'min:1|max:191',
         ]);
 
         $cabang = new Cabang();
+        $cabang->idCabang = $request->idCabang;
         $cabang->alamat = $request->alamat;
         $cabang->noHp = $request->noHp;
         $cabang->save();
