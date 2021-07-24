@@ -19,8 +19,12 @@ class PesananController extends Controller
     public function index(Request $request)
     {
         $Receipts = Receipt::orderBy('created_at', 'desc')->get();
-        if ($request->has('dateTransaksi')) {
-            $Receipts = Receipt::whereDate('tglPembelian', "$request->dateTransaksi")->get();
+        if ($request->has('nonota') || $request->has('dateTransaksi')) {
+            $Receipts = Receipt::where('receiptId',  'LIKE', '%' . $request->nonota . '%');
+
+            if ($request->dateTransaksi != null) $Receipts->whereDate('tglPembelian', "$request->dateTransaksi");
+
+            $Receipts = $Receipts->get();
         }
         return view('/pesanan/index', compact('Receipts'));
     }
