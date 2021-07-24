@@ -4,12 +4,12 @@
             "Manage Pengguna" => [
                 "has-sub" => false,
                 "url" => "user",
-                "icon" => 'micon dw dw-house-1'
+                "icon" => 'micon dw dw-user1'
             ],
             "Manage Cabang" => [
                 "has-sub" => false,
                 "url" => "cabang",
-                "icon" => 'micon dw dw-house-1'
+                "icon" => 'micon dw dw-shop'
             ],
         ],
         "Menu" => [
@@ -21,12 +21,12 @@
             "Menu" => [
                 "has-sub" => false,
                 "url" => 'menu',
-                "icon" => 'micon dw dw-house-1'
+                "icon" => 'micon dw dw-notebook'
             ],
             "Pesanan" => [
                 "has-sub" => false,
                 "url" => "pesanan",
-                "icon" => 'micon dw dw-house-1'
+                "icon" => 'micon dw dw dw-notepad-1'
             ],
         ]
     ]
