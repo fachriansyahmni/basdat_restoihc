@@ -27,4 +27,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getIdbyName($name)
+    {
+        $User = self::where('name', $name)->first();
+        if ($User != null) {
+            return $User->id;
+        } else {
+            return false;
+        }
+    }
 }
