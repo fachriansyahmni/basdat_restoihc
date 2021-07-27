@@ -31,6 +31,8 @@ class PesananExport implements FromCollection, WithHeadings
             'Jumlah Menu',
             'Id Menu',
             'Menu Pesanan',
+            'Id Kategori',
+            'Kategori',
             'Total Harga',
             'Jumlah Bayar',
         ];
@@ -42,6 +44,7 @@ class PesananExport implements FromCollection, WithHeadings
             ->join('receipt', 'pesanan.receiptid', '=', 'receipt.receiptId')
             ->join('users', 'users.id', '=', 'receipt.idPegawai')
             ->join('menu', 'menu.id', '=', 'pesanan.idMenu')
+            ->join('menu_kategoris', 'menu.menu_kategori_id', '=', 'menu_kategoris.id')
             ->select(
                 'users.id',
                 'users.name',
@@ -52,6 +55,8 @@ class PesananExport implements FromCollection, WithHeadings
                 'pesanan.jmlMenu',
                 'menu.id as idMenu',
                 'menu.namaMenu',
+                'menu_kategoris.id as idKategori',
+                'menu_kategoris.name as kategori',
                 'receipt.totalHarga',
                 'receipt.jmlBayar'
             )
