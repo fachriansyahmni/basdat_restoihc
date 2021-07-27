@@ -23,8 +23,8 @@
                         <div id="chart"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">2020</div>
-                        <div class="weight-600 font-14">Contact</div>
+                        <div class="h4 mb-0">{{count(App\Menu::get())}}</div>
+                        <div class="weight-600 font-14">Total Menu</div>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
                         <div id="chart2"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">400</div>
-                        <div class="weight-600 font-14">Deals</div>
+                        <div class="h4 mb-0">{{count(App\Receipt::get())}}</div>
+                        <div class="weight-600 font-14">Total Pesanan</div>
                     </div>
                 </div>
             </div>
@@ -49,8 +49,8 @@
                         <div id="chart3"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">350</div>
-                        <div class="weight-600 font-14">Campaign</div>
+                        <div class="h4 mb-0">{{count(App\Pesanan::get())}}</div>
+                        <div class="weight-600 font-14">Menu Terjual</div>
                     </div>
                 </div>
             </div>
@@ -62,8 +62,8 @@
                         <div id="chart4"></div>
                     </div>
                     <div class="widget-data">
-                        <div class="h4 mb-0">$6060</div>
-                        <div class="weight-600 font-14">Worth</div>
+                        <div class="h4 mb-0">{{date('D')}}</div>
+                        <div class="weight-600 font-14">Hari</div>
                     </div>
                 </div>
             </div>
