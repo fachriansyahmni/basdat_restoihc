@@ -5,7 +5,7 @@
     <div class="clearfix">
         <div class="pull-left">
             <h4 class="text-blue h4">Ubah Data User</h4>
-            <p class="mb-30">All bootstrap element classies</p>
+            <p class="mb-30">Form untuk ubah data pengguna</p>
         </div>
     </div>
     <form action="/user/update/<?= $user->id; ?>" method="POST" >

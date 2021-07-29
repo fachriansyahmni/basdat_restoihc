@@ -48,8 +48,8 @@ class CabangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'alamat' => 'min:1|max:5',
-            'noHp' => 'min:1|max:5',
+            'alamat' => 'min:1|required',
+            'noHp' => 'min:1|required',
         ]);
 
         $cabang = Cabang::find($id);

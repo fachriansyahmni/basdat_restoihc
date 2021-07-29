@@ -16,7 +16,7 @@ class CabangImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new Cabang([
-            'id' => $row['id'],
+            'idCabang' => $row['idcabang'],
             'alamat' => $row['alamat'],
             'noHp' => $row['nomor_hp'],
         ]);

@@ -13,7 +13,7 @@ class Cabang extends Model
      */
     protected $table = 'cabang';
     protected $fillable = [
-        'alamat', 'noHp'
+        'idCabang', 'alamat', 'noHp'
     ];
     public $incrementing = false;
     protected $primaryKey = 'idCabang';

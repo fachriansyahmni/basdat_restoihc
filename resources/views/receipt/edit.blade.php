@@ -1,5 +1,9 @@
 @extends('deskapp.dashboard')
 
+@php
+    $Cabangs = App\Cabang::get();
+@endphp
+
 @section('main-content')
 <div class="page-header">
     <div class="row">
@@ -53,6 +57,18 @@
                         <input name="noMeja" class="form-control" value="<?= $Receipt->d_pesanan[0]->noMeja; ?>" type="text" placeholder="Nomor Meja">
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-12 col-md-2 col-form-label">Cabang</label>
+            <div class="col-sm-12 col-md-10">
+                <select id="" class="form-control" name="idCabang">
+                    <option value=""></option>
+                    @foreach ($Cabangs as $Cabang)
+                    <option value="{{$Cabang->idCabang}}" {{($Receipt->idCabang == $Cabang->idCabang) ? "selected" : ""}}>{{$Cabang->idCabang}} - {{$Cabang->alamat}}</option>
+                        
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-group row">

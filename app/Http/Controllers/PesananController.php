@@ -93,7 +93,7 @@ class PesananController extends Controller
         $totalHarga = 0;
         $receipt = new Receipt([
             'receiptId' => Receipt::generateId(),
-            'idCabang' => null,
+            'idCabang' => $request->cabang,
             'idPegawai' => Auth::user()->id,
             'nama_pelanggan' => $request->namaPembeli,
             'totalHarga' => 0,

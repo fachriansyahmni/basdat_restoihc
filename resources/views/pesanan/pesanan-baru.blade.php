@@ -13,6 +13,19 @@
                 <div class="pd-20">
                     <div class="form-row mb-2">
                         <div class="col-2">
+                            <label for="">Cabang</label>
+                        </div>
+                        <div class="col-10">
+                            <select  name="cabang" class="form-control" required id="">
+                                <option value=""></option>
+                                @foreach (App\Cabang::get() as $cabang)
+                                    <option value="{{$cabang->idCabang}}">{{$cabang->idCabang}} - {{$cabang->alamat}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row mb-2">
+                        <div class="col-2">
                             <label for="">Nama Pembeli</label>
                         </div>
                         <div class="col-10">

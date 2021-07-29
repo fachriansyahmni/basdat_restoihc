@@ -19,7 +19,7 @@ class CabangExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Id',
+            'idCabang',
             'Alamat',
             'Nomor Hp',
         ];
@@ -28,7 +28,7 @@ class CabangExport implements FromCollection, WithHeadings
     public function collection()
     {
         //     return Cabang::all();
-        $cabang = DB::table('cabang')->select('id', 'alamat', 'noHp')->get();
+        $cabang = DB::table('cabang')->select('idCabang', 'alamat', 'noHp')->get();
         return $cabang;
     }
 
